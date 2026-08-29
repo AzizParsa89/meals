@@ -43,6 +43,12 @@ class _tabsScreenState extends State<TabsScreen> {
       _selectedPageIndex = index;
     });
   }
+  void _setScreen(String identifier){
+    if(identifier=='filters'){
+  }else {
+    Navigator.of(context).pop();
+  }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +65,7 @@ class _tabsScreenState extends State<TabsScreen> {
       activePageTitle = 'Favorites';
     }
     return Scaffold(
-      drawer: MainDrawer(),
+      drawer: MainDrawer(onSelectScreen: _setScreen,),
       appBar: AppBar(title: Text(activePageTitle)),
       body: activePage,
       bottomNavigationBar: BottomNavigationBar(
